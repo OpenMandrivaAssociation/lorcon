@@ -13,7 +13,6 @@ Group:		Networking/Other
 URL:		http://802.11ninja.net/
 Source:		http://802.11ninja.net/code/%{name}-current.tar.bz2
 BuildRequires:	libpcap-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Lorcon is a generic library for injecting 802.11 frames, capable of injection
