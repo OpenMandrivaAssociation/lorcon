@@ -1,6 +1,6 @@
 %define	name	lorcon
 %define version	0.0.20060625
-%define	release	%mkrel 7
+%define	release	%mkrel 8
 %define major	1
 %define libname	%mklibname %{name} %{major}
 
