@@ -1,6 +1,6 @@
 %define	name	lorcon
 %define version	0.0.20060625
-%define	release	%mkrel 8
+%define	release	9
 %define major	1
 %define libname	%mklibname %{name} %{major}
 
@@ -13,7 +13,6 @@ Group:		Networking/Other
 URL:		http://802.11ninja.net/
 Source:		http://802.11ninja.net/code/%{name}-current.tar.bz2
 BuildRequires:	libpcap-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 Lorcon is a generic library for injecting 802.11 frames, capable of injection
@@ -48,21 +47,10 @@ applications which will use %{name}.
 %make
 
 %install
-rm -rf %{buildroot}
 mkdir -p \
-	$RPM_BUILD_ROOT/%{_includedir} \
-	$RPM_BUILD_ROOT/%{_libdir}
-%makeinstall LIB=$RPM_BUILD_ROOT/%{_libdir}
-
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
+	%{buildroot}/%{_includedir} \
+	%{buildroot}/%{_libdir}
+%makeinstall LIB=%{buildroot}/%{_libdir}
 
 %files -n %{libname}
 %defattr(-,root,root)
@@ -72,5 +60,44 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_includedir}/*.h
 %{_libdir}/liborcon.a
-%{_libdir}/liborcon.la
 %{_libdir}/liborcon.so
+
+
+%changelog
+* Fri Dec 10 2010 Oden Eriksson <oeriksson@mandriva.com> 0.0.20060625-8mdv2011.0
++ Revision: 620257
+- the mass rebuild of 2010.0 packages
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 0.0.20060625-7mdv2010.0
++ Revision: 429868
+- rebuild
+
+* Tue Jul 22 2008 Thierry Vignaud <tv@mandriva.org> 0.0.20060625-6mdv2009.0
++ Revision: 240258
+- rebuild
+
+* Tue Jul 22 2008 Thierry Vignaud <tv@mandriva.org> 0.0.20060625-5mdv2009.0
++ Revision: 239717
+- rebuild
+- rebuild
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Stefan van der Eijk <stefan@mandriva.org>
+    - Import lorcon
+
+
+
+* Mon Jun 26 2006 Pascal Terjan <pterjan@mandriva.org> 0.0.20060625-3mdv2007.0
+- fix build on x86_64
+
+* Sun Jun 25 2006 Stefan van der Eijk <stefan@eijk.nu> 0.0.20060625-2
+- add %%post & %%postun
+
+* Sun Jun 25 2006 Stefan van der Eijk <stefan@eijk.nu> 0.0.20060625-1
+- initial package
