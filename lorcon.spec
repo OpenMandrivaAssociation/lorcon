@@ -6,8 +6,8 @@
 
 Summary:	A generic library for injecting 802.11 frames
 Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Version:	163
+Release:	1
 License:	GPL
 Group:		Networking/Other
 URL:		http://802.11ninja.net/
