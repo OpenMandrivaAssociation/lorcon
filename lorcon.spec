@@ -10,7 +10,7 @@ Version:	163
 Release:	1
 License:	GPL
 Group:		Networking/Other
-URL:		http://802.11ninja.net/
+URL:		https://802.11ninja.net/
 Source:		http://802.11ninja.net/code/%{name}-current.tar.bz2
 BuildRequires:	libpcap-devel
 
