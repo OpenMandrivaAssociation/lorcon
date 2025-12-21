@@ -12,6 +12,7 @@ License:	GPL
 Group:		Networking/Other
 URL:		https://802.11ninja.net/
 Source:		http://802.11ninja.net/code/%{name}-current.tar.bz2
+BuildRequires:	make
 BuildRequires:	libpcap-devel
 
 %description
